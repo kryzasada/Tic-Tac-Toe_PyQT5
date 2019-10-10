@@ -6,196 +6,196 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 
 
-class Ui_Win(object):
-    def setupUi(self, Win):
-        Win.setObjectName("Win")
-        Win.resize(800, 600)
+class Ui_mainWindow(object):
+    def setupUi(self, mainWindow):
+        mainWindow.setObjectName("mainWindow")
+        mainWindow.resize(800, 600)
 
-        self.label_move = []
+        self.labelBehindButton = []
 
-        self.centralwidget = QtWidgets.QWidget(Win)
+        self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
 
-        self.who_move(XY_move)
+        self.who_move(whoMove)
 
-        self.line_1 = QtWidgets.QFrame(self.centralwidget)
-        self.line_1.setGeometry(QtCore.QRect(224, 242, 358, 16))
-        self.line_1.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_1.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_1.setObjectName("line_1")
+        self.horizontalTop = QtWidgets.QFrame(self.centralwidget)
+        self.horizontalTop.setGeometry(QtCore.QRect(224, 242, 358, 16))
+        self.horizontalTop.setFrameShape(QtWidgets.QFrame.HLine)
+        self.horizontalTop.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.horizontalTop.setObjectName("horizontalTop")
 
-        self.line_2 = QtWidgets.QFrame(self.centralwidget)
-        self.line_2.setGeometry(QtCore.QRect(224, 342, 358, 16))
-        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_2.setObjectName("line_2")
+        self.horizontalBottom = QtWidgets.QFrame(self.centralwidget)
+        self.horizontalBottom.setGeometry(QtCore.QRect(224, 342, 358, 16))
+        self.horizontalBottom.setFrameShape(QtWidgets.QFrame.HLine)
+        self.horizontalBottom.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.horizontalBottom.setObjectName("horizontalBottom")
 
-        self.line_3 = QtWidgets.QFrame(self.centralwidget)
-        self.line_3.setGeometry(QtCore.QRect(330, 170, 16, 261))
-        self.line_3.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_3.setObjectName("line_3")
+        self.uprightLeft = QtWidgets.QFrame(self.centralwidget)
+        self.uprightLeft.setGeometry(QtCore.QRect(330, 170, 16, 261))
+        self.uprightLeft.setFrameShape(QtWidgets.QFrame.VLine)
+        self.uprightLeft.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.uprightLeft.setObjectName("uprightLeft")
 
-        self.line_4 = QtWidgets.QFrame(self.centralwidget)
-        self.line_4.setGeometry(QtCore.QRect(470, 170, 16, 261))
-        self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_4.setObjectName("line_4")
+        self.uprightRight = QtWidgets.QFrame(self.centralwidget)
+        self.uprightRight.setGeometry(QtCore.QRect(470, 170, 16, 261))
+        self.uprightRight.setFrameShape(QtWidgets.QFrame.VLine)
+        self.uprightRight.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.uprightRight.setObjectName("uprightRight")
 
 
-        self.label_X = QtWidgets.QLabel(self.centralwidget)
-        self.label_X.setGeometry(QtCore.QRect(210, 40, 131, 51))
+        self.labelPlayerX = QtWidgets.QLabel(self.centralwidget)
+        self.labelPlayerX.setGeometry(QtCore.QRect(210, 40, 131, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.label_X.setFont(font)
-        self.label_X.setObjectName("label_X")
+        self.labelPlayerX.setFont(font)
+        self.labelPlayerX.setObjectName("labelPlayerX")
 
-        self.label_Y = QtWidgets.QLabel(self.centralwidget)
-        self.label_Y.setGeometry(QtCore.QRect(480, 40, 131, 51))
+        self.labelPlayerY = QtWidgets.QLabel(self.centralwidget)
+        self.labelPlayerY.setGeometry(QtCore.QRect(480, 40, 131, 51))
         font.setPointSize(16)
-        self.label_Y.setFont(font)
-        self.label_Y.setObjectName("label_Y")
+        self.labelPlayerY.setFont(font)
+        self.labelPlayerY.setObjectName("labelPlayerY")
 
         for x in range(0, 9):
-            self.label_move.append(QtWidgets.QLabel(self.centralwidget))
+            self.labelBehindButton.append(QtWidgets.QLabel(self.centralwidget))
 
 
-        self.A1 = QtWidgets.QPushButton(self.centralwidget)
-        self.A1.setGeometry(QtCore.QRect(250, 190, 71, 41))
-        self.A1.setText("")
-        self.A1.clicked.connect(lambda: self.move_button("A1", XY_move))
+        self.buttonTopLeft = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonTopLeft.setGeometry(QtCore.QRect(250, 190, 71, 41))
+        self.buttonTopLeft.setText("")
+        self.buttonTopLeft.clicked.connect(lambda: self.del_button("A1", whoMove))
 
-        self.A2 = QtWidgets.QPushButton(self.centralwidget)
-        self.A2.setGeometry(QtCore.QRect(370, 190, 71, 41))
-        self.A2.setText("")
-        self.A2.clicked.connect(lambda: self.move_button("A2", XY_move))
+        self.buttonTopMid = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonTopMid.setGeometry(QtCore.QRect(370, 190, 71, 41))
+        self.buttonTopMid.setText("")
+        self.buttonTopMid.clicked.connect(lambda: self.del_button("A2", whoMove))
 
-        self.A3 = QtWidgets.QPushButton(self.centralwidget)
-        self.A3.setGeometry(QtCore.QRect(493, 190, 71, 41))
-        self.A3.setText("")
-        self.A3.clicked.connect(lambda: self.move_button("A3", XY_move))
-
-
-
-        self.B1 = QtWidgets.QPushButton(self.centralwidget)
-        self.B1.setGeometry(QtCore.QRect(250, 280, 71, 41))
-        self.B1.setText("")
-        self.B1.clicked.connect(lambda: self.move_button("B1", XY_move))
-
-        self.B2 = QtWidgets.QPushButton(self.centralwidget)
-        self.B2.setGeometry(QtCore.QRect(372, 280, 71, 41))
-        self.B2.setText("")
-        self.B2.clicked.connect(lambda: self.move_button("B2", XY_move))
-
-        self.B3 = QtWidgets.QPushButton(self.centralwidget)
-        self.B3.setGeometry(QtCore.QRect(493, 280, 71, 41))
-        self.B3.setText("")
-        self.B3.clicked.connect(lambda: self.move_button("B3", XY_move))
+        self.uttonTopRight = QtWidgets.QPushButton(self.centralwidget)
+        self.uttonTopRight.setGeometry(QtCore.QRect(493, 190, 71, 41))
+        self.uttonTopRight.setText("")
+        self.uttonTopRight.clicked.connect(lambda: self.del_button("A3", whoMove))
 
 
 
-        self.C1 = QtWidgets.QPushButton(self.centralwidget)
-        self.C1.setGeometry(QtCore.QRect(250, 370, 71, 41))
-        self.C1.setText("")
-        self.C1.clicked.connect(lambda: self.move_button("C1", XY_move))
+        self.buttonMidLeft = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonMidLeft.setGeometry(QtCore.QRect(250, 280, 71, 41))
+        self.buttonMidLeft.setText("")
+        self.buttonMidLeft.clicked.connect(lambda: self.del_button("B1", whoMove))
 
-        self.C2 = QtWidgets.QPushButton(self.centralwidget)
-        self.C2.setGeometry(QtCore.QRect(370, 370, 71, 41))
-        self.C2.setText("")
-        self.C2.clicked.connect(lambda: self.move_button("C2", XY_move))
+        self.buttonMidMid = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonMidMid.setGeometry(QtCore.QRect(372, 280, 71, 41))
+        self.buttonMidMid.setText("")
+        self.buttonMidMid.clicked.connect(lambda: self.del_button("B2", whoMove))
 
-        self.C3 = QtWidgets.QPushButton(self.centralwidget)
-        self.C3.setGeometry(QtCore.QRect(493, 370, 71, 41))
-        self.C3.setText("")
-        self.C3.clicked.connect(lambda: self.move_button("C3", XY_move))
-
-
-
-        Win.setCentralWidget(self.centralwidget)
+        self.buttonMidRight = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonMidRight.setGeometry(QtCore.QRect(493, 280, 71, 41))
+        self.buttonMidRight.setText("")
+        self.buttonMidRight.clicked.connect(lambda: self.del_button("B3", whoMove))
 
 
-        self.retranslateUi(Win)
-        QtCore.QMetaObject.connectSlotsByName(Win)
 
-    def retranslateUi(self, Win):
+        self.buttonBottomLeft = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonBottomLeft.setGeometry(QtCore.QRect(250, 370, 71, 41))
+        self.buttonBottomLeft.setText("")
+        self.buttonBottomLeft.clicked.connect(lambda: self.del_button("C1", whoMove))
+
+        self.buttonBottomMid = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonBottomMid.setGeometry(QtCore.QRect(370, 370, 71, 41))
+        self.buttonBottomMid.setText("")
+        self.buttonBottomMid.clicked.connect(lambda: self.del_button("C2", whoMove))
+
+        self.buttonBottomRight = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonBottomRight.setGeometry(QtCore.QRect(493, 370, 71, 41))
+        self.buttonBottomRight.setText("")
+        self.buttonBottomRight.clicked.connect(lambda: self.del_button("C3", whoMove))
+
+
+
+        mainWindow.setCentralWidget(self.centralwidget)
+
+
+        self.retranslate_Ui(mainWindow)
+        QtCore.QMetaObject.connectSlotsByName(mainWindow)
+
+    def retranslate_Ui(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Win.setWindowTitle(_translate("Win", "Tic-Tac-Toe"))
-        self.label_X.setText(_translate("Win", "Player X = " + str(scoreX)))
-        self.label_Y.setText(_translate("Win", "Player Y = " + str(scoreY)))
+        mainWindow.setWindowTitle(_translate("mainWindow", "Tic-Tac-Toe"))
+        self.labelPlayerX.setText(_translate("mainWindow", "Player X = " + str(scoreX)))
+        self.labelPlayerY.setText(_translate("mainWindow", "Player Y = " + str(scoreY)))
 
 
-    def move_button(self, position, XY_move):
-        print(position)
+    def del_button(self, whichButton, whoMove):
+        print(whichButton)
 
 
-        if XY_move :
-            XY_move = "X"
+        if whoMove :
+            whoMove = "X"
         else:
-            XY_move = "O"
+            whoMove = "O"
 
 
-        if position == 'A1':
-            self.label_move[0].setGeometry(QtCore.QRect(250, 190, 71, 41))
-            self.A1.deleteLater()
-            self.A1 = None
-            self.label_write(self.label_move[0], XY_move)
+        if whichButton == 'A1':
+            self.labelBehindButton[0].setGeometry(QtCore.QRect(250, 190, 71, 41))
+            self.buttonTopLeft.deleteLater()
+            self.buttonTopLeft = None
+            self.show_move(self.labelBehindButton[0], whoMove)
 
-        elif position == 'A2':
-            self.label_move[1].setGeometry(QtCore.QRect(370, 190, 71, 41))
-            self.A2.deleteLater()
-            self.A2 = None
-            self.label_write(self.label_move[1], XY_move)
+        elif whichButton == 'A2':
+            self.labelBehindButton[1].setGeometry(QtCore.QRect(370, 190, 71, 41))
+            self.buttonTopMid.deleteLater()
+            self.buttonTopMid = None
+            self.show_move(self.labelBehindButton[1], whoMove)
 
-        elif position == 'A3':
-            self.label_move[2].setGeometry(QtCore.QRect(493, 190, 71, 41))
-            self.A3.deleteLater()
-            self.A3 = None
-            self.label_write(self.label_move[2], XY_move)
+        elif whichButton == 'A3':
+            self.labelBehindButton[2].setGeometry(QtCore.QRect(493, 190, 71, 41))
+            self.uttonTopRight.deleteLater()
+            self.uttonTopRight = None
+            self.show_move(self.labelBehindButton[2], whoMove)
 
-        elif position == 'B1':
-            self.label_move[3].setGeometry(QtCore.QRect(250, 280, 71, 41))
-            self.B1.deleteLater()
-            self.B1 = None
-            self.label_write(self.label_move[3], XY_move)
+        elif whichButton == 'B1':
+            self.labelBehindButton[3].setGeometry(QtCore.QRect(250, 280, 71, 41))
+            self.buttonMidLeft.deleteLater()
+            self.buttonMidLeft = None
+            self.show_move(self.labelBehindButton[3], whoMove)
 
-        elif position == 'B2':
-            self.label_move[4].setGeometry(QtCore.QRect(372, 280, 71, 41))
-            self.B2.deleteLater()
-            self.B2 = None
-            self.label_write(self.label_move[4], XY_move)
+        elif whichButton == 'B2':
+            self.labelBehindButton[4].setGeometry(QtCore.QRect(372, 280, 71, 41))
+            self.buttonMidMid.deleteLater()
+            self.buttonMidMid = None
+            self.show_move(self.labelBehindButton[4], whoMove)
 
-        elif position == 'B3':
-            self.label_move[5].setGeometry(QtCore.QRect(493, 280, 71, 41))
-            self.B3.deleteLater()
-            self.B3 = None
-            self.label_write(self.label_move[5], XY_move)
+        elif whichButton == 'B3':
+            self.labelBehindButton[5].setGeometry(QtCore.QRect(493, 280, 71, 41))
+            self.buttonMidRight.deleteLater()
+            self.buttonMidRight = None
+            self.show_move(self.labelBehindButton[5], whoMove)
 
-        elif position == 'C1':
-            self.label_move[6].setGeometry(QtCore.QRect(250, 370, 71, 41))
-            self.C1.deleteLater()
-            self.C1 = None
-            self.label_write(self.label_move[6], XY_move)
+        elif whichButton == 'C1':
+            self.labelBehindButton[6].setGeometry(QtCore.QRect(250, 370, 71, 41))
+            self.buttonBottomLeft.deleteLater()
+            self.buttonBottomLeft = None
+            self.show_move(self.labelBehindButton[6], whoMove)
 
-        elif position == 'C2':
-            self.label_move[7].setGeometry(QtCore.QRect(370, 370, 71, 41))
-            self.C2.deleteLater()
-            self.C2 = None
-            self.label_write(self.label_move[7], XY_move)
+        elif whichButton == 'C2':
+            self.labelBehindButton[7].setGeometry(QtCore.QRect(370, 370, 71, 41))
+            self.buttonBottomMid.deleteLater()
+            self.buttonBottomMid = None
+            self.show_move(self.labelBehindButton[7], whoMove)
 
-        elif position == 'C3':
-            self.label_move[8].setGeometry(QtCore.QRect(493, 370, 71, 41))
-            self.C3.deleteLater()
-            self.C3 = None
-            self.label_write(self.label_move[8], XY_move)
+        elif whichButton == 'C3':
+            self.labelBehindButton[8].setGeometry(QtCore.QRect(493, 370, 71, 41))
+            self.buttonBottomRight.deleteLater()
+            self.buttonBottomRight = None
+            self.show_move(self.labelBehindButton[8], whoMove)
 
 
-    def label_write(self, rr, XY_move):
-        rr.setAlignment(QtCore.Qt.AlignCenter)
-        rr.setText(QtCore.QCoreApplication.translate("Win", XY_move))
+    def show_move(self, whichLabel, whoMove):
+        whichLabel.setAlignment(QtCore.Qt.AlignCenter)
+        whichLabel.setText(QtCore.QCoreApplication.translate("mainWindow", whoMove))
 
-    def who_move(self, XY_move):
-        if XY_move:
+    def who_move(self, whoMove):
+        if whoMove:
             self.line_X = QtWidgets.QFrame(self.centralwidget)
             self.line_X.setGeometry(QtCore.QRect(205, 58, 130, 51))
             self.line_X.setFrameShape(QtWidgets.QFrame.HLine)
@@ -210,11 +210,11 @@ class Ui_Win(object):
 if __name__ == "__main__":
     scoreX = 0
     scoreY = 0
-    XY_move = bool(True)
+    whoMove = bool(True)
 
-    app = QtWidgets.QApplication(sys.argv)
-    Win = QtWidgets.QMainWindow()
-    ui = Ui_Win()
-    ui.setupUi(Win)
-    Win.show()
-    sys.exit(app.exec_())
+    mainApplication = QtWidgets.QApplication(sys.argv)
+    mainWindow = QtWidgets.QMainWindow()
+    ui = Ui_mainWindow()
+    ui.setupUi(mainWindow)
+    mainWindow.show()
+    sys.exit(mainApplication.exec_())
