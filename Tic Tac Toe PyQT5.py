@@ -21,7 +21,7 @@ class Ui_mainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
 
 
-        self.who_move(whoMove)
+
 
         self.horizontalTop = QtWidgets.QFrame(self.centralwidget)
         self.horizontalTop.setGeometry(QtCore.QRect(224, 242, 358, 16))
@@ -61,6 +61,13 @@ class Ui_mainWindow(object):
         self.labelPlayerY.setFont(font)
         self.labelPlayerY.setObjectName("labelPlayerY")
 
+        self.lineWhoMove = QtWidgets.QFrame(self.centralwidget)
+        self.lineWhoMove.setFrameShape(QtWidgets.QFrame.HLine)
+        self.lineWhoMove.setLineWidth(1)
+
+
+        self.who_move(whoMove)
+
         for x in range(0, 9):
             self.labelBehindButton.append(QtWidgets.QLabel(self.centralwidget))
 
@@ -95,6 +102,7 @@ class Ui_mainWindow(object):
         self.buttonMidRight = QtWidgets.QPushButton(self.centralwidget)
         self.buttonMidRight.setGeometry(QtCore.QRect(493, 280, 71, 41))
         self.buttonMidRight.setText("")
+
         self.buttonMidRight.clicked.connect(lambda: self.del_button("B3"))
 
 
@@ -140,6 +148,7 @@ class Ui_mainWindow(object):
             shapeMove = str("O")
             whoMove = True
 
+        self.who_move(whoMove)
 
         if whichButton == 'A1':
             self.labelBehindButton[0].setGeometry(QtCore.QRect(250, 190, 71, 41))
@@ -202,15 +211,10 @@ class Ui_mainWindow(object):
 
     def who_move(self, whoMove):
         if whoMove:
-            self.line_X = QtWidgets.QFrame(self.centralwidget)
-            self.line_X.setGeometry(QtCore.QRect(205, 58, 130, 51))
-            self.line_X.setFrameShape(QtWidgets.QFrame.HLine)
-            self.line_X.setLineWidth(1)
+            self.lineWhoMove.setGeometry(QtCore.QRect(205, 58, 130, 51))
+
         else:
-            self.line_Y = QtWidgets.QFrame(self.centralwidget)
-            self.line_Y.setGeometry(QtCore.QRect(475, 58, 130, 51))
-            self.line_Y.setFrameShape(QtWidgets.QFrame.HLine)
-            self.line_Y.setLineWidth(1)
+            self.lineWhoMove.setGeometry(QtCore.QRect(475, 58, 130, 51))
 
 
 if __name__ == "__main__":
