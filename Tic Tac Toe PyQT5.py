@@ -13,8 +13,6 @@ class Ui_mainWindow(object):
         mainWindow.setObjectName("mainWindow")
         mainWindow.resize(800, 600)
 
-
-
         self.labelBehindButton = []
 
         self.centralwidget = QtWidgets.QWidget(mainWindow)
@@ -82,10 +80,10 @@ class Ui_mainWindow(object):
         self.buttonTopMid.setText("")
         self.buttonTopMid.clicked.connect(lambda: self.del_button("A2"))
 
-        self.uttonTopRight = QtWidgets.QPushButton(self.centralwidget)
-        self.uttonTopRight.setGeometry(QtCore.QRect(493, 190, 71, 41))
-        self.uttonTopRight.setText("")
-        self.uttonTopRight.clicked.connect(lambda: self.del_button("A3"))
+        self.buttonTopRight = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonTopRight.setGeometry(QtCore.QRect(493, 190, 71, 41))
+        self.buttonTopRight.setText("")
+        self.buttonTopRight.clicked.connect(lambda: self.del_button("A3"))
 
 
 
@@ -140,6 +138,7 @@ class Ui_mainWindow(object):
         print(whichButton)
 
         global whoMove
+        global shapeMove
 
         if whoMove :
             shapeMove = str('X')
@@ -147,6 +146,7 @@ class Ui_mainWindow(object):
         else:
             shapeMove = str("O")
             whoMove = True
+
 
         self.who_move(whoMove)
 
@@ -164,8 +164,8 @@ class Ui_mainWindow(object):
 
         elif whichButton == 'A3':
             self.labelBehindButton[2].setGeometry(QtCore.QRect(493, 190, 71, 41))
-            self.uttonTopRight.deleteLater()
-            self.uttonTopRight = None
+            self.buttonTopRight.deleteLater()
+            self.buttonTopRight = None
             self.show_move(self.labelBehindButton[2], shapeMove)
 
         elif whichButton == 'B1':
@@ -205,17 +205,46 @@ class Ui_mainWindow(object):
             self.show_move(self.labelBehindButton[8], shapeMove)
 
 
+
     def show_move(self, whichLabel, whoMove):
         whichLabel.setAlignment(QtCore.Qt.AlignCenter)
         whichLabel.setText(QtCore.QCoreApplication.translate("mainWindow", whoMove))
+        self.check_Win()
 
     def who_move(self, whoMove):
         if whoMove:
             self.lineWhoMove.setGeometry(QtCore.QRect(205, 58, 130, 51))
-
         else:
             self.lineWhoMove.setGeometry(QtCore.QRect(475, 58, 130, 51))
 
+    def check_Win(self):
+        if (((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[1].text() == shapeMove) and
+                 (self.labelBehindButton[2].text() == shapeMove)) or
+                ((self.labelBehindButton[3].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
+                 (self.labelBehindButton[5].text() == shapeMove)) or
+                ((self.labelBehindButton[6].text() == shapeMove) and (self.labelBehindButton[7].text() == shapeMove) and
+                 (self.labelBehindButton[8].text() == shapeMove)) or
+
+                ((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[3].text() == shapeMove) and
+                 (self.labelBehindButton[6].text() == shapeMove)) or
+                ((self.labelBehindButton[1].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
+                 (self.labelBehindButton[7].text() == shapeMove)) or
+                ((self.labelBehindButton[2].text() == shapeMove) and (self.labelBehindButton[5].text() == shapeMove) and
+                 (self.labelBehindButton[8].text() == shapeMove)) or
+
+                ((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
+                 (self.labelBehindButton[8].text() == shapeMove)) or
+                ((self.labelBehindButton[2].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
+                 (self.labelBehindButton[6].text() == shapeMove))):
+
+            print("działa - linia ")
+
+        if ((self.labelBehindButton[0].text()) and (self.labelBehindButton[1].text()) and
+                (self.labelBehindButton[2].text()) and (self.labelBehindButton[3].text()) and
+                (self.labelBehindButton[4].text()) and (self.labelBehindButton[5].text()) and
+                (self.labelBehindButton[6].text()) and (self.labelBehindButton[7].text()) and
+                (self.labelBehindButton[8].text())):
+            print("Wszystkie")
 
 if __name__ == "__main__":
     scoreX = 0
