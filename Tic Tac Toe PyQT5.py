@@ -3,6 +3,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 import sys
 
 
@@ -209,7 +210,7 @@ class Ui_mainWindow(object):
     def show_move(self, whichLabel, whoMove):
         whichLabel.setAlignment(QtCore.Qt.AlignCenter)
         whichLabel.setText(QtCore.QCoreApplication.translate("mainWindow", whoMove))
-        self.check_Win()
+        self.check_win()
 
     def who_move(self, whoMove):
         if whoMove:
@@ -217,7 +218,7 @@ class Ui_mainWindow(object):
         else:
             self.lineWhoMove.setGeometry(QtCore.QRect(475, 58, 130, 51))
 
-    def check_Win(self):
+    def check_win(self):
         if (((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[1].text() == shapeMove) and
                  (self.labelBehindButton[2].text() == shapeMove)) or
                 ((self.labelBehindButton[3].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
@@ -237,14 +238,39 @@ class Ui_mainWindow(object):
                 ((self.labelBehindButton[2].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
                  (self.labelBehindButton[6].text() == shapeMove))):
 
-            print("działa - linia ")
+            windowWin = QMessageBox()
+            windowWin.setWindowTitle("Won " + shapeMove)
+            windowWin.setText("Won player : " + shapeMove + "\n\n Play again? ")
+            windowWin.setIcon(QMessageBox.Information)
+            windowWin.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            windowWin.buttonClicked.connect(self.check_win_click_button)
+            windowWin.exec_()
 
-        if ((self.labelBehindButton[0].text()) and (self.labelBehindButton[1].text()) and
+        elif ((self.labelBehindButton[0].text()) and (self.labelBehindButton[1].text()) and
                 (self.labelBehindButton[2].text()) and (self.labelBehindButton[3].text()) and
                 (self.labelBehindButton[4].text()) and (self.labelBehindButton[5].text()) and
                 (self.labelBehindButton[6].text()) and (self.labelBehindButton[7].text()) and
                 (self.labelBehindButton[8].text())):
-            print("Wszystkie")
+
+            windowWin = QMessageBox()
+            windowWin.setWindowTitle("Draw ")
+            windowWin.setText("Draw \n\n Play again? ")
+            windowWin.setIcon(QMessageBox.Information)
+            windowWin.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            windowWin.buttonClicked.connect(self.check_win_click_button)
+            windowWin.exec_()
+
+    def check_win_click_button(self, i):
+        if (i.text()) == '&Yes':
+            pass
+
+        if (i.text()) == '&No':
+            mainApplication.quit()
+
+
+
+
+
 
 if __name__ == "__main__":
     scoreX = 0
