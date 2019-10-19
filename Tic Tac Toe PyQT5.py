@@ -1,297 +1,280 @@
 # -*- coding: utf-8 -*-
 # Created by: PyQt5 UI code generator 5.13.0
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 import sys
 
 
-class Ui_mainWindow(object):
+class UiMainWindow(object):
+    def __init__(self):
+        super(UiMainWindow, self).__init__()
+        main_window.setObjectName('main_window')
+        main_window.resize(800, 600)
 
+        self.central_widget = QtWidgets.QWidget(main_window)
 
-    def setupUi(self, mainWindow):
-        mainWindow.setObjectName("mainWindow")
-        mainWindow.resize(800, 600)
+        self.line_horizontal_top = QtWidgets.QFrame(self.central_widget)
+        self.line_horizontal_bottom = QtWidgets.QFrame(self.central_widget)
+        self.line_upright_left = QtWidgets.QFrame(self.central_widget)
+        self.line_upright_right = QtWidgets.QFrame(self.central_widget)
 
-        self.labelBehindButton = []
+        self.font_label = QtGui.QFont()
+        self.font_label.setPointSize(16)
 
-        self.centralwidget = QtWidgets.QWidget(mainWindow)
-        self.centralwidget.setObjectName("centralwidget")
+        self.label_player_X = QtWidgets.QLabel(self.central_widget)
+        self.label_player_O = QtWidgets.QLabel(self.central_widget)
+        self.line_who_move = QtWidgets.QFrame(self.central_widget)
 
+        self.label_behind_button = []
 
+    def setup_ui(self, window):
+        self.central_widget.setObjectName('central_widget')
 
+        self.line_horizontal_top.setGeometry(QtCore.QRect(224, 242, 358, 16))
+        self.line_horizontal_top.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_horizontal_top.setFrameShadow(QtWidgets.QFrame.Sunken)
 
-        self.horizontalTop = QtWidgets.QFrame(self.centralwidget)
-        self.horizontalTop.setGeometry(QtCore.QRect(224, 242, 358, 16))
-        self.horizontalTop.setFrameShape(QtWidgets.QFrame.HLine)
-        self.horizontalTop.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.horizontalTop.setObjectName("horizontalTop")
+        self.line_horizontal_bottom.setGeometry(QtCore.QRect(224, 342, 358, 16))
+        self.line_horizontal_bottom.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_horizontal_bottom.setFrameShadow(QtWidgets.QFrame.Sunken)
 
-        self.horizontalBottom = QtWidgets.QFrame(self.centralwidget)
-        self.horizontalBottom.setGeometry(QtCore.QRect(224, 342, 358, 16))
-        self.horizontalBottom.setFrameShape(QtWidgets.QFrame.HLine)
-        self.horizontalBottom.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.horizontalBottom.setObjectName("horizontalBottom")
+        self.line_upright_left.setGeometry(QtCore.QRect(330, 170, 16, 261))
+        self.line_upright_left.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_upright_left.setFrameShadow(QtWidgets.QFrame.Sunken)
 
-        self.uprightLeft = QtWidgets.QFrame(self.centralwidget)
-        self.uprightLeft.setGeometry(QtCore.QRect(330, 170, 16, 261))
-        self.uprightLeft.setFrameShape(QtWidgets.QFrame.VLine)
-        self.uprightLeft.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.uprightLeft.setObjectName("uprightLeft")
+        self.line_upright_right.setGeometry(QtCore.QRect(470, 170, 16, 261))
+        self.line_upright_right.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_upright_right.setFrameShadow(QtWidgets.QFrame.Sunken)
 
-        self.uprightRight = QtWidgets.QFrame(self.centralwidget)
-        self.uprightRight.setGeometry(QtCore.QRect(470, 170, 16, 261))
-        self.uprightRight.setFrameShape(QtWidgets.QFrame.VLine)
-        self.uprightRight.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.uprightRight.setObjectName("uprightRight")
+        self.label_player_X.setGeometry(QtCore.QRect(210, 40, 131, 51))
+        self.label_player_X.setFont(self.font_label)
 
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.labelPlayerX = QtWidgets.QLabel(self.centralwidget)
-        self.labelPlayerX.setGeometry(QtCore.QRect(210, 40, 131, 51))
-        self.labelPlayerX.setFont(font)
-        self.labelPlayerX.setObjectName("labelPlayerX")
+        self.label_player_O.setGeometry(QtCore.QRect(480, 40, 131, 51))
+        self.label_player_O.setFont(self.font_label)
+        self.label_player_O.setObjectName('label_player_O')
 
-        self.labelPlayerY = QtWidgets.QLabel(self.centralwidget)
-        self.labelPlayerY.setGeometry(QtCore.QRect(480, 40, 131, 51))
-        self.labelPlayerY.setFont(font)
-        self.labelPlayerY.setObjectName("labelPlayerY")
+        self.line_who_move.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_who_move.setLineWidth(1)
 
-        self.lineWhoMove = QtWidgets.QFrame(self.centralwidget)
-        self.lineWhoMove.setFrameShape(QtWidgets.QFrame.HLine)
-        self.lineWhoMove.setLineWidth(1)
+        self.who_move(who_move)
 
-        self.who_move(whoMove)
-
-        font.setPointSize(10)
+        self.font_label.setPointSize(10)
         for x in range(0, 9):
-            self.labelBehindButton.append(QtWidgets.QLabel(self.centralwidget))
-            self.labelBehindButton[x].setFont(font)
+            self.label_behind_button.append(QtWidgets.QLabel(self.central_widget))
+            self.label_behind_button[x].setFont(self.font_label)
 
-        self.buttonTopLeft = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonTopLeft.setGeometry(QtCore.QRect(250, 190, 71, 41))
-        self.buttonTopLeft.setText("")
-        self.buttonTopLeft.clicked.connect(lambda: self.connect_button("A1"))
+        self.button_top_left = QtWidgets.QPushButton(self.central_widget)
+        self.button_top_left.setGeometry(QtCore.QRect(250, 190, 71, 41))
+        self.button_top_left.setText('')
+        self.button_top_left.clicked.connect(lambda: self.connect_button('A1'))
 
-        self.buttonTopMid = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonTopMid.setGeometry(QtCore.QRect(370, 190, 71, 41))
-        self.buttonTopMid.setText("")
-        self.buttonTopMid.clicked.connect(lambda: self.connect_button("A2"))
+        self.button_top_mid = QtWidgets.QPushButton(self.central_widget)
+        self.button_top_mid.setGeometry(QtCore.QRect(370, 190, 71, 41))
+        self.button_top_mid.setText('')
+        self.button_top_mid.clicked.connect(lambda: self.connect_button('A2'))
 
-        self.buttonTopRight = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonTopRight.setGeometry(QtCore.QRect(493, 190, 71, 41))
-        self.buttonTopRight.setText("")
-        self.buttonTopRight.clicked.connect(lambda: self.connect_button("A3"))
+        self.button_top_right = QtWidgets.QPushButton(self.central_widget)
+        self.button_top_right.setGeometry(QtCore.QRect(493, 190, 71, 41))
+        self.button_top_right.setText('')
+        self.button_top_right.clicked.connect(lambda: self.connect_button('A3'))
 
+        self.button_mid_left = QtWidgets.QPushButton(self.central_widget)
+        self.button_mid_left.setGeometry(QtCore.QRect(250, 280, 71, 41))
+        self.button_mid_left.setText('')
+        self.button_mid_left.clicked.connect(lambda: self.connect_button('B1'))
 
+        self.button_mid_mid = QtWidgets.QPushButton(self.central_widget)
+        self.button_mid_mid.setGeometry(QtCore.QRect(372, 280, 71, 41))
+        self.button_mid_mid.setText('')
+        self.button_mid_mid.clicked.connect(lambda: self.connect_button('B2'))
 
-        self.buttonMidLeft = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonMidLeft.setGeometry(QtCore.QRect(250, 280, 71, 41))
-        self.buttonMidLeft.setText("")
-        self.buttonMidLeft.clicked.connect(lambda: self.connect_button("B1"))
+        self.button_mid_right = QtWidgets.QPushButton(self.central_widget)
+        self.button_mid_right.setGeometry(QtCore.QRect(493, 280, 71, 41))
+        self.button_mid_right.setText('')
+        self.button_mid_right.clicked.connect(lambda: self.connect_button('B3'))
 
-        self.buttonMidMid = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonMidMid.setGeometry(QtCore.QRect(372, 280, 71, 41))
-        self.buttonMidMid.setText("")
-        self.buttonMidMid.clicked.connect(lambda: self.connect_button("B2"))
+        self.button_bottom_left = QtWidgets.QPushButton(self.central_widget)
+        self.button_bottom_left.setGeometry(QtCore.QRect(250, 370, 71, 41))
+        self.button_bottom_left.setText('')
+        self.button_bottom_left.clicked.connect(lambda: self.connect_button('C1'))
 
-        self.buttonMidRight = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonMidRight.setGeometry(QtCore.QRect(493, 280, 71, 41))
-        self.buttonMidRight.setText("")
+        self.button_bottom_mid = QtWidgets.QPushButton(self.central_widget)
+        self.button_bottom_mid.setGeometry(QtCore.QRect(370, 370, 71, 41))
+        self.button_bottom_mid.setText('')
+        self.button_bottom_mid.clicked.connect(lambda: self.connect_button('C2'))
 
-        self.buttonMidRight.clicked.connect(lambda: self.connect_button("B3"))
+        self.button_bottom_right = QtWidgets.QPushButton(self.central_widget)
+        self.button_bottom_right.setGeometry(QtCore.QRect(493, 370, 71, 41))
+        self.button_bottom_right.setText('')
+        self.button_bottom_right.clicked.connect(lambda: self.connect_button('C3'))
 
+        window.setCentralWidget(self.central_widget)
 
+        self.retranslate_ui(window)
+        QtCore.QMetaObject.connectSlotsByName(window)
 
-        self.buttonBottomLeft = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonBottomLeft.setGeometry(QtCore.QRect(250, 370, 71, 41))
-        self.buttonBottomLeft.setText("")
-        self.buttonBottomLeft.clicked.connect(lambda: self.connect_button("C1"))
-
-        self.buttonBottomMid = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonBottomMid.setGeometry(QtCore.QRect(370, 370, 71, 41))
-        self.buttonBottomMid.setText("")
-        self.buttonBottomMid.clicked.connect(lambda: self.connect_button("C2"))
-
-        self.buttonBottomRight = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonBottomRight.setGeometry(QtCore.QRect(493, 370, 71, 41))
-        self.buttonBottomRight.setText("")
-        self.buttonBottomRight.clicked.connect(lambda: self.connect_button("C3"))
-
-
-        mainWindow.setCentralWidget(self.centralwidget)
-
-
-        self.retranslate_Ui(mainWindow)
-        QtCore.QMetaObject.connectSlotsByName(mainWindow)
-
-    def retranslate_Ui(self, mainWindow):
+    def retranslate_ui(self, window):
         _translate = QtCore.QCoreApplication.translate
-        mainWindow.setWindowTitle(_translate("mainWindow", "Tic-Tac-Toe"))
-        self.labelPlayerX.setText(_translate("mainWindow", "Player X = " + str(scoreX)))
-        self.labelPlayerY.setText(_translate("mainWindow", "Player O = " + str(scoreY)))
+        window.setWindowTitle(_translate('window', 'Tic-Tac-Toe'))
+        self.label_player_X.setText(_translate('window', 'Player X = ' + str(score_player_X)))
+        self.label_player_O.setText(_translate('window', 'Player O = ' + str(score_player_O)))
 
+    def connect_button(self, which_button):
+        global who_move
+        global shape_move
 
-    def connect_button(self, whichButton):
-        global whoMove
-        global shapeMove
-
-        if whoMove :
-            shapeMove = str('X')
-            whoMove = False
+        if who_move:
+            shape_move = str('X')
+            who_move = False
         else:
-            shapeMove = str("O")
-            whoMove = True
+            shape_move = str('O')
+            who_move = True
 
+        if which_button == 'A1':
+            self.label_behind_button[0].setGeometry(QtCore.QRect(250, 190, 71, 41))
+            self.button_top_left.setVisible(False)
+            self.show_move(self.label_behind_button[0], shape_move)
 
-        self.who_move(whoMove)
+        elif which_button == 'A2':
+            self.label_behind_button[1].setGeometry(QtCore.QRect(370, 190, 71, 41))
+            self.button_top_mid.setVisible(False)
+            self.show_move(self.label_behind_button[1], shape_move)
 
-        if whichButton == 'A1':
-            self.labelBehindButton[0].setGeometry(QtCore.QRect(250, 190, 71, 41))
-            self.buttonTopLeft.setVisible(False)
-            self.show_move(self.labelBehindButton[0], shapeMove)
+        elif which_button == 'A3':
+            self.label_behind_button[2].setGeometry(QtCore.QRect(493, 190, 71, 41))
+            self.button_top_right.setVisible(False)
+            self.show_move(self.label_behind_button[2], shape_move)
 
-        elif whichButton == 'A2':
-            self.labelBehindButton[1].setGeometry(QtCore.QRect(370, 190, 71, 41))
-            self.buttonTopMid.setVisible(False)
-            self.show_move(self.labelBehindButton[1], shapeMove)
+        elif which_button == 'B1':
+            self.label_behind_button[3].setGeometry(QtCore.QRect(250, 280, 71, 41))
+            self.button_mid_left.setVisible(False)
+            self.show_move(self.label_behind_button[3], shape_move)
 
-        elif whichButton == 'A3':
-            self.labelBehindButton[2].setGeometry(QtCore.QRect(493, 190, 71, 41))
-            self.buttonTopRight.setVisible(False)
-            self.show_move(self.labelBehindButton[2], shapeMove)
+        elif which_button == 'B2':
+            self.label_behind_button[4].setGeometry(QtCore.QRect(372, 280, 71, 41))
+            self.button_mid_mid.setVisible(False)
+            self.show_move(self.label_behind_button[4], shape_move)
 
-        elif whichButton == 'B1':
-            self.labelBehindButton[3].setGeometry(QtCore.QRect(250, 280, 71, 41))
-            self.buttonMidLeft.setVisible(False)
-            self.show_move(self.labelBehindButton[3], shapeMove)
+        elif which_button == 'B3':
+            self.label_behind_button[5].setGeometry(QtCore.QRect(493, 280, 71, 41))
+            self.button_mid_right.setVisible(False)
+            self.show_move(self.label_behind_button[5], shape_move)
 
-        elif whichButton == 'B2':
-            self.labelBehindButton[4].setGeometry(QtCore.QRect(372, 280, 71, 41))
-            self.buttonMidMid.setVisible(False)
-            self.show_move(self.labelBehindButton[4], shapeMove)
+        elif which_button == 'C1':
+            self.label_behind_button[6].setGeometry(QtCore.QRect(250, 370, 71, 41))
+            self.button_bottom_left.setVisible(False)
+            self.show_move(self.label_behind_button[6], shape_move)
 
-        elif whichButton == 'B3':
-            self.labelBehindButton[5].setGeometry(QtCore.QRect(493, 280, 71, 41))
-            self.buttonMidRight.setVisible(False)
-            self.show_move(self.labelBehindButton[5], shapeMove)
+        elif which_button == 'C2':
+            self.label_behind_button[7].setGeometry(QtCore.QRect(370, 370, 71, 41))
+            self.button_bottom_mid.setVisible(False)
+            self.show_move(self.label_behind_button[7], shape_move)
 
-        elif whichButton == 'C1':
-            self.labelBehindButton[6].setGeometry(QtCore.QRect(250, 370, 71, 41))
-            self.buttonBottomLeft.setVisible(False)
-            self.show_move(self.labelBehindButton[6], shapeMove)
+        elif which_button == 'C3':
+            self.label_behind_button[8].setGeometry(QtCore.QRect(493, 370, 71, 41))
+            self.button_bottom_right.setVisible(False)
+            self.show_move(self.label_behind_button[8], shape_move)
 
-        elif whichButton == 'C2':
-            self.labelBehindButton[7].setGeometry(QtCore.QRect(370, 370, 71, 41))
-            self.buttonBottomMid.setVisible(False)
-            self.show_move(self.labelBehindButton[7], shapeMove)
-
-        elif whichButton == 'C3':
-            self.labelBehindButton[8].setGeometry(QtCore.QRect(493, 370, 71, 41))
-            self.buttonBottomRight.setVisible(False)
-            self.show_move(self.labelBehindButton[8], shapeMove)
-
-
-
-    def show_move(self, whichLabel, whoMove):
-        whichLabel.setAlignment(QtCore.Qt.AlignCenter)
-        whichLabel.setText(QtCore.QCoreApplication.translate("mainWindow", whoMove))
+    def show_move(self, which_label, who_move_local):
+        which_label.setAlignment(QtCore.Qt.AlignCenter)
+        which_label.setText(QtCore.QCoreApplication.translate('main_window', who_move_local))
         self.check_win()
 
-
-    def who_move(self, whoMove):
-        if whoMove:
-            self.lineWhoMove.setGeometry(QtCore.QRect(205, 58, 130, 51))
+    def who_move(self, who_move_local):
+        if who_move_local:
+            self.line_who_move.setGeometry(QtCore.QRect(205, 58, 130, 51))
         else:
-            self.lineWhoMove.setGeometry(QtCore.QRect(475, 58, 130, 51))
-
+            self.line_who_move.setGeometry(QtCore.QRect(475, 58, 130, 51))
 
     def check_win(self):
-        if (((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[1].text() == shapeMove) and
-                 (self.labelBehindButton[2].text() == shapeMove)) or
-                ((self.labelBehindButton[3].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
-                 (self.labelBehindButton[5].text() == shapeMove)) or
-                ((self.labelBehindButton[6].text() == shapeMove) and (self.labelBehindButton[7].text() == shapeMove) and
-                 (self.labelBehindButton[8].text() == shapeMove)) or
+        if ((self.label_behind_button[0].text() == shape_move and
+                self.label_behind_button[1].text() == shape_move and
+                self.label_behind_button[2].text() == shape_move) or
+                (self.label_behind_button[3].text() == shape_move and
+                 self.label_behind_button[4].text() == shape_move and
+                 self.label_behind_button[5].text() == shape_move) or
+                (self.label_behind_button[6].text() == shape_move and
+                 self.label_behind_button[7].text() == shape_move and
+                 self.label_behind_button[8].text() == shape_move) or
 
-                ((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[3].text() == shapeMove) and
-                 (self.labelBehindButton[6].text() == shapeMove)) or
-                ((self.labelBehindButton[1].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
-                 (self.labelBehindButton[7].text() == shapeMove)) or
-                ((self.labelBehindButton[2].text() == shapeMove) and (self.labelBehindButton[5].text() == shapeMove) and
-                 (self.labelBehindButton[8].text() == shapeMove)) or
+                (self.label_behind_button[0].text() == shape_move and
+                 self.label_behind_button[3].text() == shape_move and
+                 self.label_behind_button[6].text() == shape_move) or
+                (self.label_behind_button[1].text() == shape_move and
+                 self.label_behind_button[4].text() == shape_move and
+                 self.label_behind_button[7].text() == shape_move) or
+                (self.label_behind_button[2].text() == shape_move and
+                 self.label_behind_button[5].text() == shape_move and
+                 self.label_behind_button[8].text() == shape_move) or
 
-                ((self.labelBehindButton[0].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
-                 (self.labelBehindButton[8].text() == shapeMove)) or
-                ((self.labelBehindButton[2].text() == shapeMove) and (self.labelBehindButton[4].text() == shapeMove) and
-                 (self.labelBehindButton[6].text() == shapeMove))):
+                (self.label_behind_button[0].text() == shape_move and
+                 self.label_behind_button[4].text() == shape_move and
+                 self.label_behind_button[8].text() == shape_move) or
+                (self.label_behind_button[2].text() == shape_move and
+                 self.label_behind_button[4].text() == shape_move and
+                 self.label_behind_button[6].text() == shape_move)):
 
             self.draw = 0
-            windowWin = QMessageBox()
-            windowWin.setWindowTitle("Won " + shapeMove)
-            windowWin.setText("Won player : " + shapeMove + "\n\n Play again? ")
-            windowWin.setIcon(QMessageBox.Information)
-            windowWin.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            windowWin.buttonClicked.connect(self.check_win_QMessageBox)
-            windowWin.exec_()
+            window_win = QMessageBox()
+            window_win.setWindowTitle('Won ' + shape_move)
+            window_win.setText('Won player : ' + shape_move + '\n\n Play again? ')
+            window_win.setIcon(QMessageBox.Information)
+            window_win.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            window_win.buttonClicked.connect(self.check_win_QMessageBox)
+            window_win.exec_()
 
-        elif ((self.labelBehindButton[0].text()) and (self.labelBehindButton[1].text()) and
-                (self.labelBehindButton[2].text()) and (self.labelBehindButton[3].text()) and
-                (self.labelBehindButton[4].text()) and (self.labelBehindButton[5].text()) and
-                (self.labelBehindButton[6].text()) and (self.labelBehindButton[7].text()) and
-                (self.labelBehindButton[8].text())):
+        elif (self.label_behind_button[0].text() and self.label_behind_button[1].text() and
+                self.label_behind_button[2].text() and self.label_behind_button[3].text() and
+                self.label_behind_button[4].text() and self.label_behind_button[5].text() and
+                self.label_behind_button[6].text() and self.label_behind_button[7].text() and
+                self.label_behind_button[8].text()):
 
             self.draw = 1
-            windowWin = QMessageBox()
-            windowWin.setWindowTitle("Draw ")
-            windowWin.setText("Draw \n\n Play again? ")
-            windowWin.setIcon(QMessageBox.Information)
-            windowWin.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-            windowWin.buttonClicked.connect(self.check_win_QMessageBox)
-            windowWin.exec_()
+            window_draw = QMessageBox()
+            window_draw.setWindowTitle('Draw ')
+            window_draw.setText('Draw \n\n Play again? ')
+            window_draw.setIcon(QMessageBox.Information)
+            window_draw.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            window_draw.buttonClicked.connect(self.check_win_QMessageBox)
+            window_draw.exec_()
 
     def check_win_QMessageBox(self, i):
         if (i.text()) == '&Yes':
-            self.buttonTopLeft.setVisible(True)
-            self.buttonTopMid.setVisible(True)
-            self.buttonTopRight.setVisible(True)
-            self.buttonMidLeft.setVisible(True)
-            self.buttonMidMid.setVisible(True)
-            self.buttonMidRight.setVisible(True)
-            self.buttonBottomLeft.setVisible(True)
-            self.buttonBottomMid.setVisible(True)
-            self.buttonBottomRight.setVisible(True)
+            self.button_top_left.setVisible(True)
+            self.button_top_mid.setVisible(True)
+            self.button_top_right.setVisible(True)
+            self.button_mid_left.setVisible(True)
+            self.button_mid_mid.setVisible(True)
+            self.button_mid_right.setVisible(True)
+            self.button_bottom_left.setVisible(True)
+            self.button_bottom_mid.setVisible(True)
+            self.button_bottom_right.setVisible(True)
 
-            if (shapeMove == 'X') and  (self.draw != 1):
-                global scoreX
-                scoreX += 1
-            elif (shapeMove == 'O') and (self.draw != 1):
-                global scoreY
-                scoreY += 1
+            if (shape_move == 'X') and (self.draw != 1):
+                global score_player_X
+                score_player_X += 1
+            elif (shape_move == 'O') and (self.draw != 1):
+                global score_player_O
+                score_player_O += 1
 
-            self.retranslate_Ui(mainWindow)
+            self.retranslate_ui(main_window)
 
             for x in range(0, 9):
-                self.labelBehindButton[x].setText(QtCore.QCoreApplication.translate("mainWindow", ""))
+                self.label_behind_button[x].setText(QtCore.QCoreApplication.translate('main_window', ''))
 
         if (i.text()) == '&No':
             sys.exit()
-            #mainApplication.quit()
-
-
-
-
 
 
 if __name__ == "__main__":
-    scoreX = 0
-    scoreY = 0
-    whoMove = True
+    score_player_X = 0
+    score_player_O = 0
+    who_move = True
 
-    mainApplication = QtWidgets.QApplication(sys.argv)
-    mainWindow = QtWidgets.QMainWindow()
-    ui = Ui_mainWindow()
-    ui.setupUi(mainWindow)
-    mainWindow.show()
-    sys.exit(mainApplication.exec_())
+    main_application = QtWidgets.QApplication(sys.argv)
+    main_window = QtWidgets.QMainWindow()
+    ui = UiMainWindow()
+    ui.setup_ui(main_window)
+    main_window.show()
+    sys.exit(main_application.exec_())
