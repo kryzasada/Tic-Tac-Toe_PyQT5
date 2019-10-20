@@ -2,4 +2,4 @@
 
 This program is Tic-Tac-Toe for two players.
 
-My first not complicated program written in the PyQT5.
+My first, not complicated program written in the PyQT5.
