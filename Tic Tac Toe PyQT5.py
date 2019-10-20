@@ -11,6 +11,7 @@ class UiMainWindow(object):
         super(UiMainWindow, self).__init__()
         main_window.setObjectName('main_window')
         main_window.resize(800, 600)
+        main_window.setWindowIcon(QtGui.QIcon('logo.png'))
 
         self.central_widget = QtWidgets.QWidget(main_window)
 
