@@ -1,5 +1,11 @@
-# Tic-Tac-Toe_PyQT5
+# Tic-Tac-Toe 'PyQT5
 
-This program is Tic-Tac-Toe for two players.
+Tic-Tac-Toe for two players.
 
-My first, not complicated program written in the PyQT5.
+### Requirements
+* Python 3.7.5+
+* PyQt5
+
+### Screenshot
+![](https://github.com/kryzasada/Tic-Tac-Toe_PyQT5/blob/master/README%20-%20photo/TTT-1.png)
+![](https://github.com/kryzasada/Tic-Tac-Toe_PyQT5/blob/master/README%20-%20photo/TTT-2.png)
