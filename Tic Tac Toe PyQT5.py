@@ -132,6 +132,8 @@ class UiMainWindow(object):
             shape_move = str('O')
             who_move = True
 
+        self.who_move(who_move)
+
         if which_button == 'A1':
             self.label_behind_button[0].setGeometry(QtCore.QRect(250, 190, 71, 41))
             self.button_top_left.setVisible(False)
